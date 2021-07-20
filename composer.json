@@ -1,5 +1,5 @@
 {
-    "name": "maxime-rainville/silverstripe-rreact",
+    "name": "maxime-rainville/silverstripe-react",
     "description": "A helper library for creating react component in Silverstripe CMS",
     "type": "silverstripe-vendormodule",
     "keywords": [
