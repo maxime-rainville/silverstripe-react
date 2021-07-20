@@ -1,0 +1,8 @@
+---
+Name: silverstripe-react
+---
+SilverStripe\Admin\LeftAndMain:
+  extra_requirements_javascript:
+    - 'maxime-rainville/silverstripe-react: client/dist/js/bundle.js'
+  extra_requirements_css:
+    - 'maxime-rainville/silverstripe-react: client/dist/styles/bundle.css'
