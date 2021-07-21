@@ -27,7 +27,7 @@ trait BootstrapComponent
 
     public function getTemplates(): array
     {
-        return [self::class, static::class];
+        return [self::class, 'MaximeRainville\\SilverstripeReact\\BootstrapComponent'];
     }
 
     public function getAttributesHTML($attrs = null)
@@ -110,7 +110,12 @@ trait BootstrapComponent
      */
     public function extraClass()
     {
-        return 'bootstrap-component ' . implode(' ', array_unique($this->extraClasses));
+        $extraClasses = [];
+        if (!empty($this->extraClasses)) {
+            $extraClasses = $this->extraClasses;
+        }
+
+        return 'bootstrap-component ' . implode(' ', array_unique($extraClasses));
     }
 
     /**
