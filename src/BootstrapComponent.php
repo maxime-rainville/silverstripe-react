@@ -15,9 +15,9 @@ trait BootstrapComponent
         'AttributesHTML' => 'HTMLFragment'
     ];
 
-    private $attributes = [];
+    protected $attributes = [];
 
-    protected $extraClasses = [];
+    protected $extraClasses;
 
     public function forTemplate()
     {
