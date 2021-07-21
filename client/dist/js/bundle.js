@@ -1,1 +1,220 @@
-!function(t){function e(o){if(n[o])return n[o].exports;var r=n[o]={i:o,l:!1,exports:{}};return t[o].call(r.exports,r,r.exports,e),r.l=!0,r.exports}var n={};e.m=t,e.c=n,e.i=function(t){return t},e.d=function(t,n,o){e.o(t,n)||Object.defineProperty(t,n,{configurable:!1,enumerable:!0,get:o})},e.n=function(t){var n=t&&t.__esModule?function(){return t.default}:function(){return t};return e.d(n,"a",n),n},e.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},e.p="",e(e.s="./client/src/bundles/bundle.js")}({"./client/src/boot/index.js":function(t,e,n){"use strict";var o=n("./client/src/boot/registerComponents.js"),r=function(t){return t&&t.__esModule?t:{default:t}}(o);window.document.addEventListener("DOMContentLoaded",function(){(0,r.default)()})},"./client/src/boot/registerComponents.js":function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var o=n(0),r=function(t){return t&&t.__esModule?t:{default:t}}(o);e.default=function(){r.default.component.registerMany({})}},"./client/src/bundles/bundle.js":function(t,e,n){"use strict";n("./client/src/legacy/entwine/index.js"),n("./client/src/boot/index.js")},"./client/src/legacy/entwine/BootstrapReactComponent.js":function(t,e,n){"use strict";function o(t){return t&&t.__esModule?t:{default:t}}var r=n(3),c=o(r),s=n(1),i=o(s),u=n(2),a=o(u),l=n(0);o(l).default.ready(function(){c.default.entwine("ss",function(t){t(".js-injector-boot .bootstrap-component").entwine({Component:null,onmatch:function(){var t=this.closest(".cms-content").attr("id"),e=t?{context:t}:{},n=this.data("component"),o=(0,l.loadComponent)(n,e);this.setComponent(o),this._super(),this.refresh()},refresh:function(){var t=this.getProps(),e=this.getComponent();a.default.render(i.default.createElement(e,t),this[0])},getProps:function(){return t(this).data("props")||{}},onunmatch:function(){a.default.unmountComponentAtNode(this[0])}})})})},"./client/src/legacy/entwine/index.js":function(t,e,n){"use strict";n("./client/src/legacy/entwine/BootstrapReactComponent.js")},0:function(t,e){t.exports=Injector},1:function(t,e){t.exports=React},2:function(t,e){t.exports=ReactDom},3:function(t,e){t.exports=jQuery}});
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// identity function for calling harmony imports with the correct context
+/******/ 	__webpack_require__.i = function(value) { return value; };
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = "./client/src/bundles/bundle.js");
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./client/src/boot/index.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _registerComponents = __webpack_require__("./client/src/boot/registerComponents.js");
+
+var _registerComponents2 = _interopRequireDefault(_registerComponents);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+window.document.addEventListener('DOMContentLoaded', function () {
+  (0, _registerComponents2.default)();
+});
+
+/***/ }),
+
+/***/ "./client/src/boot/registerComponents.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _Injector = __webpack_require__(0);
+
+var _Injector2 = _interopRequireDefault(_Injector);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function () {
+  _Injector2.default.component.registerMany({});
+};
+
+/***/ }),
+
+/***/ "./client/src/bundles/bundle.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__("./client/src/legacy/entwine/index.js");
+
+__webpack_require__("./client/src/boot/index.js");
+
+/***/ }),
+
+/***/ "./client/src/legacy/entwine/BootstrapReactComponent.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _jquery = __webpack_require__(3);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(2);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _Injector = __webpack_require__(0);
+
+var _Injector2 = _interopRequireDefault(_Injector);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_Injector2.default.ready(function () {
+  _jquery2.default.entwine('ss', function ($) {
+    $('.js-injector-boot .bootstrap-component').entwine({
+
+      Component: null,
+
+      onmatch: function onmatch() {
+        var cmsContent = this.closest('.cms-content').attr('id');
+        var context = cmsContent ? { context: cmsContent } : {};
+
+        var componentName = this.data('component');
+        var Component = (0, _Injector.loadComponent)(componentName, context);
+
+        this.setComponent(Component);
+        this._super();
+        this.refresh();
+      },
+      refresh: function refresh() {
+        var props = this.getProps();
+        var Component = this.getComponent();
+        _reactDom2.default.render(_react2.default.createElement(Component, props), this[0]);
+      },
+      getProps: function getProps() {
+        return $(this).data('props') || {};
+      },
+      onunmatch: function onunmatch() {
+        _reactDom2.default.unmountComponentAtNode(this[0]);
+      }
+    });
+  });
+});
+
+/***/ }),
+
+/***/ "./client/src/legacy/entwine/index.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__("./client/src/legacy/entwine/BootstrapReactComponent.js");
+
+/***/ }),
+
+/***/ 0:
+/***/ (function(module, exports) {
+
+module.exports = Injector;
+
+/***/ }),
+
+/***/ 1:
+/***/ (function(module, exports) {
+
+module.exports = React;
+
+/***/ }),
+
+/***/ 2:
+/***/ (function(module, exports) {
+
+module.exports = ReactDom;
+
+/***/ }),
+
+/***/ 3:
+/***/ (function(module, exports) {
+
+module.exports = jQuery;
+
+/***/ })
+
+/******/ });
+//# sourceMappingURL=bundle.js.map
