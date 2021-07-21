@@ -1,1 +1,2 @@
 require('./BootstrapReactComponent');
+require('./BootstrapReactFormField');
