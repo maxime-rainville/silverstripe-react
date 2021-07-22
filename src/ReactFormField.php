@@ -13,7 +13,7 @@ abstract class ReactFormField extends FormField implements ReactComponent
     public function getAttributes()
     {
         $attrs = [
-            'class' => 'react-form-field  ' . $this->extraClass(),
+            'class' => 'react-form-field',
             'data-component' => $this->getComponent(),
             'data-render-input' => false,
             'data-props' => json_encode($this->getProps()),
@@ -31,7 +31,7 @@ abstract class ReactFormField extends FormField implements ReactComponent
         return [
             'name' => $this->getName(),
             'value' => $this->Value(),
-            'class' => $this->extraClass(),
+            'extraClass' => $this->extraClass(),
             'id' => $this->ID(),
             'disabled' => $this->isDisabled(),
             'readonly' => $this->isReadonly(),
