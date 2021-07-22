@@ -11,6 +11,7 @@ Injector.ready(() => {
 
       Component: null,
       Value: null,
+      HiddenInput: null,
 
       onmatch() {
         const cmsContent = this.closest('.cms-content').attr('id');
@@ -20,8 +21,14 @@ Injector.ready(() => {
 
         const componentName = this.data('component');
         const Component = loadComponent(componentName, context);
-
         this.setComponent(Component);
+
+        const hiddenInputId = this.data('hidden-input-id');
+        if (hiddenInputId) {
+          const input = $(`#${hiddenInputId}`);
+          this.setHiddenInput(input);
+        }
+
         this._super();
         this.refresh();
       },
@@ -32,7 +39,12 @@ Injector.ready(() => {
         ReactDOM.render(<Component {...props} />, this[0]);
       },
 
-      handleChange(event, {id, value}) {
+      handleChange(event, { value }) {
+        const input = this.getHiddenInput();
+        if (input) {
+          input.val(value);
+          input.trigger('change');
+        }
         this.setValue(value);
         this.refresh();
       },
@@ -48,7 +60,7 @@ Injector.ready(() => {
         if (value !== null) {
           props.value = value;
         }
-        props.onChange = this.handleChange.bind(this)
+        props.onChange = this.handleChange.bind(this);
         return props;
       },
 
