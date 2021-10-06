@@ -49,8 +49,9 @@ abstract class ReactFormField extends FormField implements ReactComponent
             'extraClass' => $this->extraClass(),
             'id' => $this->ID(),
             'disabled' => $this->isDisabled(),
-            'readonly' => $this->isReadonly(),
-            'autofocus' => $this->isAutofocus()
+            'readOnly' => $this->isReadonly(),
+            'autofocus' => $this->isAutofocus(),
+            'title' => $this->title
         ];
     }
 

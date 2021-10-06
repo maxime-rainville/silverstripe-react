@@ -36,7 +36,7 @@ Injector.ready(() => {
       refresh() {
         const props = this.getProps();
         const Component = this.getComponent();
-        ReactDOM.render(<Component {...props} />, this[0]);
+        ReactDOM.render(<Component {...props} noHolder />, this[0]);
       },
 
       handleChange(event, { value }) {
