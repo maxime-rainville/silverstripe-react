@@ -1,4 +1,6 @@
 # Silverstripe React
+[![PHPUnit](https://github.com/maxime-rainville/silverstripe-react/actions/workflows/phpunit.yml/badge.svg)](https://github.com/maxime-rainville/silverstripe-react/actions/workflows/phpunit.yml)
+
 
 IN DEVELOPMENT!!!
 
