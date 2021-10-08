@@ -9,11 +9,20 @@ on:
 jobs:
   build:
 
-    runs-on: ${{ matrix.operating-system }}
     strategy:
       matrix:
-        operating-system: ['ubuntu-latest']
-        php-versions: ['7.3', '7.4']
+        os: ['ubuntu-latest']
+        php-versions: 
+          - 7.3
+          - 7.4
+        database:
+          - MYSQL
+    
+    runs-on: ${{ matrix.os }}
+    env:
+      DB: ${{ matrix.database }}
+      SS_ENVIRONMENT_TYPE: dev
+    
     services:
       mysql:
         image: mysql:5.7
