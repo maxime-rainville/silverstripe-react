@@ -15,6 +15,10 @@ jobs:
         php-versions: 
           - 7.3
           - 7.4
+        composer-stability:
+          - '--prefer-lowest'
+          - '--prefer-stable'
+          - ''
         database:
           - MYSQL
     
@@ -68,7 +72,7 @@ jobs:
       run: composer require silverstripe/recipe-cms=^4 --no-update
 
     - name: Install dependencies
-      run: composer install --prefer-dist --no-progress
+      run: composer update --prefer-source --no-progress ${{ matrix.composer-stability }}
 
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
