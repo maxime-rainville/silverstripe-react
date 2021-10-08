@@ -115,7 +115,9 @@ trait BootstrapComponent
             $extraClasses = $this->extraClasses;
         }
 
-        return 'bootstrap-component ' . implode(' ', array_unique($extraClasses));
+        $extraClasses[] = 'bootstrap-component';
+
+        return implode(' ', array_unique($extraClasses));
     }
 
     /**
