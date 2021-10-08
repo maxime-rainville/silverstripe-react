@@ -26,9 +26,7 @@ jobs:
       SS_DATABASE_SERVER: 127.0.0.1
       SS_DATABASE_USERNAME: root
       SS_DATABASE_PASSWORD: silverstripe
-      SS_DATABASE_NAME: silverstripe
-      SS_DATABASE_PORT: ${{ job.services.mysql.ports['3306'] }}
-      
+      SS_DATABASE_NAME: silverstripe      
     
     services:
       mysql:
@@ -76,4 +74,6 @@ jobs:
     # Docs: https://getcomposer.org/doc/articles/scripts.md
 
     - name: Run test suite
+      env:
+        SS_DATABASE_PORT: ${{ job.services.mysql.ports['3306'] }}
       run: vendor/bin/phpunit
