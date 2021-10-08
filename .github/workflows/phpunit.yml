@@ -75,4 +75,6 @@ jobs:
     # Docs: https://getcomposer.org/doc/articles/scripts.md
 
     - name: Run test suite
+      env:
+        SS_DATABASE_PORT: ${{ job.services.mysql.ports['3306'] }}
       run: vendor/bin/phpunit
