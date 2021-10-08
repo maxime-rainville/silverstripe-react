@@ -16,7 +16,7 @@ jobs:
           - 7.3
           - 7.4
         composer-stability:
-          - '--prefer-lowest'
+          - '--prefer-lowest --prefer-stable'
           - '--prefer-stable'
           - ''
         database:
