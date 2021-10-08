@@ -32,6 +32,9 @@ jobs:
         key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
         restore-keys: |
           ${{ runner.os }}-php-
+          
+    - name: Require test dependencies
+      run: composer require silverstripe/recipe-cms=^4 --no-update
 
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
