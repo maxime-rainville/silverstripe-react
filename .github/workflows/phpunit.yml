@@ -24,59 +24,9 @@ jobs:
           - MYSQL
     
     runs-on: ${{ matrix.os }}
-    env:
-      DB: ${{ matrix.database }}
-      SS_ENVIRONMENT_TYPE: dev
-      SS_DATABASE_CLASS: MySQLDatabase
-      SS_DATABASE_SERVER: 127.0.0.1
-      SS_DATABASE_USERNAME: root
-      SS_DATABASE_PASSWORD: silverstripe
-      SS_DATABASE_NAME: silverstripe      
     
-#     services:
-#       mysql:
-#         image: mysql:5.7
-#         env:
-#           MYSQL_ALLOW_EMPTY_PASSWORD: false
-#           MYSQL_ROOT_PASSWORD: silverstripe
-#           MYSQL_DATABASE: silverstripe
-#         ports:
-#           - 3306/tcp
-#         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
-
     steps:
-    
-    - name: Setup PHP
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: ${{ matrix.php-versions }}
-        extensions: imagick, swoole
-        
-#     - name: Start mysql service
-#       run: sudo /etc/init.d/mysql start
-    
-    - uses: actions/checkout@v2
-
-    - name: Validate composer.json and composer.lock
-      run: composer validate --strict
-
-    - name: Cache Composer packages
-      id: composer-cache
-      uses: actions/cache@v2
-      with:
-        path: vendor
-        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-php-
-          
-    - name: Require test dependencies
-      run: composer require silverstripe/recipe-cms=^4 --no-update
-
-    - name: Install dependencies
-      run: composer update --prefer-source --no-progress ${{ matrix.composer-stability }}
-
-    # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
-    # Docs: https://getcomposer.org/doc/articles/scripts.md
-
     - name: Run test suite
       uses: maxime-rainville/silverstripe-ci-phpunit@master
+      with:
+        composer-stability: ${{ matrix.composer-stability }}
