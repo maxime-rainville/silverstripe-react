@@ -52,8 +52,8 @@ jobs:
         php-version: ${{ matrix.php-versions }}
         extensions: imagick, swoole
         
-    - name: Start mysql service
-      run: sudo /etc/init.d/mysql start
+#     - name: Start mysql service
+#       run: sudo /etc/init.d/mysql start
     
     - uses: actions/checkout@v2
 
