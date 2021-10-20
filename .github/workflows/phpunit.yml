@@ -30,3 +30,4 @@ jobs:
       uses: maxime-rainville/silverstripe-ci-phpunit@master
       with:
         composer-stability: ${{ matrix.composer-stability }}
+        php-versions: ${{ matrix.php-versions }}
