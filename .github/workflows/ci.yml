@@ -1,0 +1,9 @@
+name: Module CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  ci:
+    uses: creative-commoners/github-actions-ci-cd/.github/workflows/ci.yml@pulls/main/actionalise
