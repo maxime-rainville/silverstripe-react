@@ -26,6 +26,12 @@ jobs:
     runs-on: ${{ matrix.os }}
     
     steps:
+    - name: Set up PHP
+      uses: maxime-rainville/silverstripe-ci-setup@master
+      with:
+        composer-stability: ${{ matrix.composer-stability }}
+        phpVersion: ${{ matrix.php-versions }}
+
     - name: Run test suite
       uses: maxime-rainville/silverstripe-ci-phpunit@master
       with:
