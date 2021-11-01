@@ -7,22 +7,23 @@ on:
     branches: [ master ]
 
 jobs:
-  setup:
+  test:
 
     strategy:
       fail-fast: false
       matrix:
+        os: ['ubuntu-latest']
         php-versions: 
-          - 7.3
+          # - 7.3
           - 7.4
         composer-stability:
-          # - '--prefer-lowest --prefer-stable'
-          - '--prefer-stable'
+          - '--prefer-lowest --prefer-stable'
+          # - '--prefer-stable'
           # - ''
         database:
           - MYSQL
     
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     
     steps:
     - name: Set up PHP
@@ -31,12 +32,6 @@ jobs:
         composer-stability: ${{ matrix.composer-stability }}
         phpVersion: ${{ matrix.php-versions }}
 
-  test:
-    needs: setup
-    runs-on: ubuntu-latest
-    steps:
-    - name: Echo PHP
-      run: php -v
     - name: Run test suite
       uses: maxime-rainville/silverstripe-ci-phpunit@master
       with:
