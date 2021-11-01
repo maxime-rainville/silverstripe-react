@@ -7,3 +7,9 @@ on:
 jobs:
   ci:
     uses: creative-commoners/github-actions-ci-cd/.github/workflows/ci.yml@pulls/main/actionalise
+    with:
+      default_jobs: |
+          - php: 7.4
+            phpunit: true
+          - php: 8.0
+            phpunit: true
