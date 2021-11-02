@@ -22,6 +22,8 @@ jobs:
           # - ''
         database:
           - driver: mysql
+          - driver: mysql
+            version: 8.0
             
     
     runs-on: ${{ matrix.os }}
