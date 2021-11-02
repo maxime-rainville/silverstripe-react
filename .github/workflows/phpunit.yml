@@ -38,8 +38,8 @@ jobs:
     - name: Set up database
       uses: maxime-rainville/silverstripe-ci-db@master
       with:
-        driver: mys${{ matrix.database.driver }}
-        version: mys${{ matrix.database.version }}
+        driver: ${{ matrix.database.driver }}
+        version: ${{ matrix.database.version }}
 
     - name: Run test suite
       uses: maxime-rainville/silverstripe-ci-phpunit@master
