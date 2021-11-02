@@ -24,6 +24,7 @@ jobs:
           - driver: mysql
           - driver: mysql
             version: 8.0
+          - driver: mariadb
             
     
     runs-on: ${{ matrix.os }}
