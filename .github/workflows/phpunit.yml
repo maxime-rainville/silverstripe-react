@@ -32,6 +32,11 @@ jobs:
         composer-stability: ${{ matrix.composer-stability }}
         phpVersion: ${{ matrix.php-versions }}
 
+    - name: Set up database
+      uses: maxime-rainville/silverstripe-ci-db@master
+      with:
+        driver: mysql
+
     - name: Run test suite
       uses: maxime-rainville/silverstripe-ci-phpunit@master
       with:
