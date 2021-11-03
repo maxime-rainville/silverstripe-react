@@ -27,7 +27,7 @@ jobs:
           - driver: mariadb
             
     
-    runs-on: ubuntu-18.04
+    runs-on: ${{ matrix.os }}
     
     steps:
     - name: Set up PHP
