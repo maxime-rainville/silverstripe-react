@@ -22,10 +22,12 @@ jobs:
           # - ''
         database:
           - driver: mysql
+            version: 5.7
           - driver: mysql
-            version: 8.0
           - driver: mariadb
-            
+          - driver: postgresql
+          - driver: sqlite
+          - driver: mssql
     
     runs-on: ${{ matrix.os }}
     
