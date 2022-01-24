@@ -18,7 +18,7 @@ Here is a composer command to create a new module project. Ensure you read the
 and update your module's composer.json to designate your code as a SilverStripe module.
 
 ```
-composer require silverstripe-module/skeleton 4.x-dev
+composer require maxime-rainville/silverstripe-react
 ```
 
 **Note:** When you have completed your module, submit it to Packagist or add it as a VCS repository to your
