@@ -3,9 +3,11 @@
 namespace MaximeRainville\SilverstripeReact;
 
 use SilverStripe\Core\Convert;
+use SilverStripe\View\AttributesHTML;
 
 trait BootstrapComponent
 {
+    use AttributesHTML;
 
     /**
      * People will need to copy this to the class implementing the trait if they define their own $casting
@@ -15,9 +17,7 @@ trait BootstrapComponent
         'AttributesHTML' => 'HTMLFragment'
     ];
 
-    protected $attributes = [];
-
-    protected $extraClasses;
+    protected $extraClasses = [''];
 
     public function forTemplate()
     {
@@ -30,77 +30,16 @@ trait BootstrapComponent
         return [self::class, 'MaximeRainville\\SilverstripeReact\\BootstrapComponent'];
     }
 
-    public function getAttributesHTML($attrs = null)
-    {
-        $exclude = (is_string($attrs)) ? func_get_args() : null;
-
-        $attrs = $this->getAttributes();
-
-        // Remove empty
-        $attrs = array_filter((array)$attrs, function ($value) {
-            return ($value || $value === 0);
-        });
-
-        // Remove excluded
-        if ($exclude) {
-            $attrs = array_diff_key($attrs, array_flip($exclude));
-        }
-
-        // Prepare HTML-friendly 'method' attribute (lower-case)
-        if (isset($attrs['method'])) {
-            $attrs['method'] = strtolower($attrs['method']);
-        }
-
-        // Create markup
-        $parts = [];
-        foreach ($attrs as $name => $value) {
-            if ($value === true) {
-                $value = $name;
-            }
-
-            $parts[] = sprintf('%s="%s"', Convert::raw2att($name), Convert::raw2att($value));
-        }
-
-        return implode(' ', $parts);
-    }
-
-    /**
-     * @param string $name
-     * @param string $value
-     * @return $this
-     */
-    public function setAttribute($name, $value)
-    {
-        $this->attributes[$name] = $value;
-        return $this;
-    }
-
-    /**
-     * @param string $name
-     * @return string
-     */
-    public function getAttribute($name)
-    {
-        if (isset($this->attributes[$name])) {
-            return $this->attributes[$name];
-        }
-        return null;
-    }
-
     /**
      * @return array
      */
-    public function getAttributes()
+    protected function getDefaultAttributes(): array
     {
-        $attrs = [
+        return [
             'class' => $this->extraClass(),
             'data-component' => $this->getComponent(),
             'data-props' => json_encode($this->getProps()),
         ];
-
-        $attrs = array_merge($attrs, $this->attributes);
-
-        return $attrs;
     }
 
     /**
@@ -110,14 +49,19 @@ trait BootstrapComponent
      */
     public function extraClass()
     {
-        $extraClasses = [];
-        if (!empty($this->extraClasses)) {
-            $extraClasses = $this->extraClasses;
-        }
+        $extraClasses = array_merge(
+            $this->getDefaultExtraClasses(),
+            $this->extraClasses,
+            ['bootstrap-component']
+        );
 
-        $extraClasses[] = 'bootstrap-component';
 
         return implode(' ', array_unique($extraClasses));
+    }
+
+    protected function getDefaultExtraClasses(): array
+    {
+        return [];
     }
 
     /**
