@@ -23,13 +23,22 @@
     "babel-polyfill": "6.7.4",
     "react": "^16.8.3"
   },
+  "peerDependencies": {
+    "silverstripe-admin": "*"
+  },
   "devDependencies": {
-    "@silverstripe/eslint-config": "^0.0.5",
+    "@silverstripe/eslint-config": "^0.0.6",
     "@silverstripe/webpack-config": "^1.7.0",
     "babel-jest": "^23.6.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.10.0",
-    "jest-cli": "^23.6.0"
+    "jest-cli": "^23.6.0",
+    "@storybook/addon-actions": "^3.4.10",
+    "@storybook/addon-knobs": "^3.4.10",
+    "@storybook/addon-notes": "^3.4.10",
+    "@storybook/addon-options": "^3.4.10",
+    "@storybook/addons": "^3.4.10",
+    "@storybook/react": "^3.4.10"
   },
   "babel": {
     "presets": [
