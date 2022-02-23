@@ -5,11 +5,43 @@ import { withKnobs, text, boolean, select } from '@storybook/addon-knobs/react';
 import { withNotes } from '@storybook/addon-notes';
 import JSXAddon from 'storybook-addon-jsx';
 import notes from '../README.md';
+import Button from 'components/Button/Button';
 
 import LeftAndMain from '../LeftAndMain';
 
 
 setAddon(JSXAddon);
+
+// Top/Bottom action buttons
+const buttons = () => {
+  const props = {
+    primary: {
+      color: 'primary',
+      outline: true,
+    },
+    secondary: {
+      color: 'secondary',
+      outline: true,
+    },
+    success: {
+      color: 'success',
+      outline: true,
+    },
+  };
+
+  return (
+    <div>
+      <Button {...props.primary}>Primary button</Button>
+      <Button {...props.secondary}>Secondary button</Button>
+      <Button {...props.success}>Success button</Button>
+    </div>
+  );
+}
+
+const props = {
+  topActions: buttons,
+  bottomActions: buttons
+};
 
 storiesOf('ReactAdmin/LeftAndMain', module)
   .addDecorator(story => <div>{story()}</div>)
@@ -17,7 +49,7 @@ storiesOf('ReactAdmin/LeftAndMain', module)
   .addWithJSX(
     'LeftAndMain',
     withNotes(notes)(() => (
-      <LeftAndMain fakeProp={text('Fake Property', 'Hello world')}>
+      <LeftAndMain fakeProp={text('Fake Property', 'Hello world')} {...props}>
         <h1>Lorem ipsum dolor sit amet</h1>
 
         <p>
