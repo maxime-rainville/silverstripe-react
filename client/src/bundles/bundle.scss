@@ -3,19 +3,12 @@
 
 // Import all of your SCSS stylesheets using relative paths from "components"
 // e.g. @import '../components/MyComponent/MyComponent.scss';
+@import "../components/ActionBar";
+@import "../components/LeftAndMain";
 
 // Import any legacy SCSS stylesheets
 // e.g. @import '../styles/MyComponent-ModelAdmin-legacy.scss
 
 .react-admin {
   width: 100%;
-}
-
-.left-and-main {
-  position: relative;
-
-  .bottom-action-bar {
-    position: absolute;
-    bottom: 0;
-  }
 }

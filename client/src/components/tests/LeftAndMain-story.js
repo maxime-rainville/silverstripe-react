@@ -9,39 +9,16 @@ import Button from 'components/Button/Button';
 
 import LeftAndMain from '../LeftAndMain';
 
-
 setAddon(JSXAddon);
 
-// Top/Bottom action buttons
-const buttons = () => {
-  const props = {
-    primary: {
-      color: 'primary',
-      outline: true,
-    },
-    secondary: {
-      color: 'secondary',
-      outline: true,
-    },
-    success: {
-      color: 'success',
-      outline: true,
-    },
-  };
+const topActions = [
+  { label: "Save", color: "primary", size: 'md'},
+  { label: "Delete", color: "secondary", size: 'md'},
+];
 
-  return (
-    <div>
-      <Button {...props.primary}>Primary button</Button>
-      <Button {...props.secondary}>Secondary button</Button>
-      <Button {...props.success}>Success button</Button>
-    </div>
-  );
-}
-
-const props = {
-  topActions: buttons,
-  bottomActions: buttons
-};
+const bottomActions = [
+  { label: "Edit", icon: "edit", color: "primary", size: 'md', outline: true },
+];
 
 storiesOf('ReactAdmin/LeftAndMain', module)
   .addDecorator(story => <div>{story()}</div>)
@@ -49,7 +26,11 @@ storiesOf('ReactAdmin/LeftAndMain', module)
   .addWithJSX(
     'LeftAndMain',
     withNotes(notes)(() => (
-      <LeftAndMain fakeProp={text('Fake Property', 'Hello world')} {...props}>
+      <LeftAndMain
+        fakeProp={text('Fake Property', 'Hello world')}
+        topActions={topActions}
+        bottomActions={bottomActions}
+      >
         <h1>Lorem ipsum dolor sit amet</h1>
 
         <p>
