@@ -5,11 +5,20 @@ import { withKnobs, text, boolean, select } from '@storybook/addon-knobs/react';
 import { withNotes } from '@storybook/addon-notes';
 import JSXAddon from 'storybook-addon-jsx';
 import notes from '../README.md';
+import Button from 'components/Button/Button';
 
 import LeftAndMain from '../LeftAndMain';
 
-
 setAddon(JSXAddon);
+
+const topActions = [
+  { label: "Save", color: "primary", size: 'md'},
+  { label: "Delete", color: "secondary", size: 'md'},
+];
+
+const bottomActions = [
+  { label: "Edit", icon: "edit", color: "primary", size: 'md', outline: true },
+];
 
 storiesOf('ReactAdmin/LeftAndMain', module)
   .addDecorator(story => <div>{story()}</div>)
@@ -17,7 +26,11 @@ storiesOf('ReactAdmin/LeftAndMain', module)
   .addWithJSX(
     'LeftAndMain',
     withNotes(notes)(() => (
-      <LeftAndMain fakeProp={text('Fake Property', 'Hello world')}>
+      <LeftAndMain
+        fakeProp={text('Fake Property', 'Hello world')}
+        topActions={topActions}
+        bottomActions={bottomActions}
+      >
         <h1>Lorem ipsum dolor sit amet</h1>
 
         <p>
