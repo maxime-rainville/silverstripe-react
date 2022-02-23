@@ -10,3 +10,12 @@
 .react-admin {
   width: 100%;
 }
+
+.left-and-main {
+  position: relative;
+
+  .bottom-action-bar {
+    position: absolute;
+    bottom: 0;
+  }
+}

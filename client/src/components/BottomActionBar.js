@@ -1,8 +1,8 @@
 import React from 'react';
 
-const TopActionBar = ({children}) => {
+const BottomActionBar = ({children}) => {
   return (
-    <div className="top-action-bar fill-width">
+    <div className="bottom-action-bar fill-width">
       <div className="btn-toolbar">
         {children}
       </div>
@@ -10,4 +10,4 @@ const TopActionBar = ({children}) => {
   );
 };
 
-export default TopActionBar;
+export default BottomActionBar;

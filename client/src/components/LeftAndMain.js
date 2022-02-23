@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Toolbar from 'components/Toolbar/Toolbar';
 import { Component as Breadcrumb } from 'components/Breadcrumb/Breadcrumb';
 import TopActionBar from "./TopActionBar";
+import BottomActionBar from "./BottomActionBar";
 
 const breadcrumbs = [
   {
@@ -10,16 +11,19 @@ const breadcrumbs = [
   },
 ];
 
-const LeftAndMain = ({children, topActions}) => {
+const LeftAndMain = ({children, topActions, bottomActions}) => {
   return (
-    <div className="fill-height">
+    <div className="left-and-main fill-height">
       <Toolbar className="fill-width">
         <Breadcrumb multiline crumbs={breadcrumbs} />
       </Toolbar>
       <TopActionBar>
-        {topActions}
+        {topActions()}
       </TopActionBar>
       {children}
+      <BottomActionBar>
+        {bottomActions()}
+      </BottomActionBar>
     </div>
   );
 };
