@@ -19,7 +19,7 @@ const ActionBar = ({actions, isBottomActionBar}) => {
   });
 
   const actionButtons = actions.map((action) => (
-      <Button {...action}>
+      <Button key={action.value} {...action}>
         {action.label}
       </Button>
     )
@@ -36,7 +36,10 @@ const ActionBar = ({actions, isBottomActionBar}) => {
 
 ActionBar.propTypes = {
   ...Button.propTypes,
-  actions: PropTypes.array,
+  actions: PropTypes.arrayOf(PropTypes.shape({
+    value: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+  })),
   isBottomActionBar: PropTypes.bool
 };
 

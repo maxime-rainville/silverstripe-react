@@ -26,9 +26,10 @@ const LeftAndMain = ({children, topActions, bottomActions}) => {
       <Toolbar className="fill-width">
         <Breadcrumb multiline crumbs={breadcrumbs} />
       </Toolbar>
-      { topActions.length > 0 ? <ActionBar actions={topActions} /> : '' }
+      { topActions.length > 0 && <ActionBar actions={topActions} /> }
       {children}
-      { bottomActions.length > 0 ? <ActionBar actions={bottomActions} isBottomActionBar /> : '' }
+      Suggested change
+      { bottomActions.length > 0 && <ActionBar actions={bottomActions} isBottomActionBar /> }
     </div>
   );
 };
