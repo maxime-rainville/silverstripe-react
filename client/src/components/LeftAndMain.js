@@ -1,15 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Toolbar from 'components/Toolbar/Toolbar';
-import { Component as Breadcrumb } from 'components/Breadcrumb/Breadcrumb';
+import HeaderComponent from './HeaderComponent';
 import ActionBar from "./ActionBar";
-
-const breadcrumbs = [
-  {
-    text: 'Innovation Week',
-    href: 'innovation-week',
-  },
-];
 
 /**
  * It renders a generic LeftAndMain UI in cms
@@ -20,28 +12,30 @@ const breadcrumbs = [
  * @returns {JSX.Element}
  * @constructor
  */
-const LeftAndMain = ({children, topActions, bottomActions}) => {
+const LeftAndMain = ({ children, topActions, bottomActions, breadcrumbs }) => {
   return (
     <div className="left-and-main fill-height">
-      <Toolbar className="fill-width">
-        <Breadcrumb multiline crumbs={breadcrumbs} />
-      </Toolbar>
-      { topActions.length > 0 && <ActionBar actions={topActions} /> }
-      {children}
-      Suggested change
-      { bottomActions.length > 0 && <ActionBar actions={bottomActions} isBottomActionBar /> }
+      <HeaderComponent breadcrumbs={breadcrumbs} />
+      <div className="panel panel--padded panel--scrollable">
+        {topActions.length > 0 && <ActionBar actions={topActions} />}
+        {children}
+        Suggested change
+        {bottomActions.length > 0 && <ActionBar actions={bottomActions} isBottomActionBar />}
+      </div>
     </div>
   );
 };
 
 LeftAndMain.propTypes = {
   topActions: PropTypes.array,
-  bottomActions: PropTypes.array
+  bottomActions: PropTypes.array,
+  breadcrumbs: PropTypes.array,
 };
 
 LeftAndMain.defaultProps = {
   topActions: [],
-  bottomActions: []
+  bottomActions: [],
+  breadcrumbs: [],
 };
 
 export default LeftAndMain;
