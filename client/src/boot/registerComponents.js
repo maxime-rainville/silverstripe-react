@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import Injector from 'lib/Injector';
-import LeftAndMain from '../components/LeftAndMain';
+import LeftAndMain from 'components/LeftAndMain';
 
 export default () => {
   Injector.component.registerMany({
