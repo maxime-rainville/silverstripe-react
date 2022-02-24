@@ -6,16 +6,16 @@ import { withNotes } from '@storybook/addon-notes';
 import JSXAddon from 'storybook-addon-jsx';
 import notes from '../README.md';
 
-import DefaultComponent from '../DefaultComponent';
+import ReactAdminErrorComponent from '../ReactAdminErrorComponent';
 
 setAddon(JSXAddon);
 
-storiesOf('ReactAdmin/DefaultComponent', module)
+storiesOf('ReactAdmin/ReactAdminErrorComponent', module)
   .addDecorator(story => <div>{story()}</div>)
   .addDecorator(withKnobs)
   .addWithJSX(
-    'DefaultComponent',
+    'ReactAdminErrorComponent',
     withNotes(notes)(() => (
-      <DefaultComponent />
+      <ReactAdminErrorComponent />
     ))
   );
