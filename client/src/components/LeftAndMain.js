@@ -19,7 +19,6 @@ const LeftAndMain = ({ children, topActions, bottomActions, breadcrumbs }) => {
       <div className="panel panel--padded panel--scrollable">
         {topActions.length > 0 && <ActionBar actions={topActions} />}
         {children}
-        Suggested change
         {bottomActions.length > 0 && <ActionBar actions={bottomActions} isBottomActionBar />}
       </div>
     </div>
