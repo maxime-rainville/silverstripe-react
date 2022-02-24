@@ -12,10 +12,10 @@ import ActionBar from "./ActionBar";
  * @returns {JSX.Element}
  * @constructor
  */
-const LeftAndMain = ({ children, topActions, bottomActions, breadcrumbs }) => {
+const LeftAndMain = ({ children, topActions, bottomActions, breadcrumbs, currentPath }) => {
   return (
     <div className="left-and-main fill-height">
-      <HeaderComponent breadcrumbs={breadcrumbs} />
+      <HeaderComponent breadcrumbs={breadcrumbs} currentPath={currentPath} />
       <div className="panel panel--padded panel--scrollable">
         {topActions.length > 0 && <ActionBar actions={topActions} />}
         {children}
