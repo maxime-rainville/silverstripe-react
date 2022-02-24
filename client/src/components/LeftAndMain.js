@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Toolbar from 'components/Toolbar/Toolbar';
 import { Component as Breadcrumb } from 'components/Breadcrumb/Breadcrumb';
 import ActionBar from "./ActionBar";
+import NavTabs from "./NavTabs";
 
 const breadcrumbs = [
   {
@@ -20,11 +21,12 @@ const breadcrumbs = [
  * @returns {JSX.Element}
  * @constructor
  */
-const LeftAndMain = ({children, topActions, bottomActions}) => {
+const LeftAndMain = ({children, topActions, bottomActions, tabs}) => {
   return (
     <div className="left-and-main fill-height">
       <Toolbar className="fill-width">
         <Breadcrumb multiline crumbs={breadcrumbs} />
+        { tabs.length > 0 && <NavTabs tabs={tabs}></NavTabs> }
       </Toolbar>
       { topActions.length > 0 && <ActionBar actions={topActions} /> }
       {children}
@@ -36,12 +38,14 @@ const LeftAndMain = ({children, topActions, bottomActions}) => {
 
 LeftAndMain.propTypes = {
   topActions: PropTypes.array,
-  bottomActions: PropTypes.array
+  bottomActions: PropTypes.array,
+  tabs: PropTypes.array
 };
 
 LeftAndMain.defaultProps = {
   topActions: [],
-  bottomActions: []
+  bottomActions: [],
+  tabs: []
 };
 
 export default LeftAndMain;
