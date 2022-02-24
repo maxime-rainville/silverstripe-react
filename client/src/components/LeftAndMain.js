@@ -21,12 +21,12 @@ const breadcrumbs = [
  * @returns {JSX.Element}
  * @constructor
  */
-const LeftAndMain = ({children, topActions, bottomActions, tabs}) => {
+const LeftAndMain = ({children, topActions, bottomActions, tabs, tabComponent}) => {
   return (
     <div className="left-and-main fill-height">
       <Toolbar className="fill-width">
         <Breadcrumb multiline crumbs={breadcrumbs} />
-        { tabs.length > 0 && <NavTabs tabs={tabs}></NavTabs> }
+        { tabs.length > 0 && <NavTabs tabs={tabs} tabComponent={tabComponent} />}
       </Toolbar>
       { topActions.length > 0 && <ActionBar actions={topActions} /> }
       {children}

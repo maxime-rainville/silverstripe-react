@@ -1,10 +1,10 @@
-.left-and-main__nav-tabs {
+.nav-tabs {
   margin-bottom: 0;
   padding-left: 0;
   height: 100%;
   display: flex;
 
-  .left-and-main__nav-tabs__tab-item {
+  &__tab-item {
     list-style-type: none;
 
     a {
@@ -26,7 +26,7 @@
     }
   }
 
-  .left-and-main__nav-tabs__tab-item--current {
+  &__tab-item--current {
     a,
     a:hover {
       border-bottom: 0.15385rem solid #43536d;

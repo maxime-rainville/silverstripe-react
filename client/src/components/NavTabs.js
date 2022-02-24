@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 import classNames from "classnames";
+import { loadComponent } from 'lib/Injector';
 
 /**
  * Render navigation tabs on CMS
@@ -10,29 +10,22 @@ import classNames from "classnames";
  * @returns {JSX.Element}
  * @constructor
  */
-const NavTabs = ({tabs}) => {
+const NavTabs = ({tabs, tabComponent}) => {
   const navTabs = tabs.map((tab, index) => {
-    const [currentPath, setCurrentPath] = useState(tab.currentPath);
 
-    const isCurrent = currentPath === tab.link;
-
-    const tabClass = classNames({
-      "left-and-main__nav-tabs__tab-item": true,
-      "left-and-main__nav-tabs__tab-item--current": isCurrent,
-    });
+    const tabClass = classNames(
+      "nav-tabs__tab-item",
+    );
 
     const tabKey = `${tab.title}-${index}`;
+    const TabComponent = tabComponent ? loadComponent(tabComponent) : "a";
 
     return (
-      <li className={tabClass} key={tabKey} tabIndex={index} role="tab" aria-selected={isCurrent} onClick={() => setCurrentPath(tab.link)}>
-        <Link to={tab.link}>{tab.title}</Link>
-      </li>
+      <TabComponent className={tabClass} key={tabKey} role="tab" {...tab}>{tab.title}</TabComponent>
     );
   });
 
-  const navTabClass = classNames({
-    "left-and-main__nav-tabs": true,
-  });
+  const navTabClass = classNames("nav-tabs");
 
   return (
     <ul className={navTabClass} role="tablist">
@@ -42,14 +35,14 @@ const NavTabs = ({tabs}) => {
 };
 
 NavTabs.propTypes = {
+  tabComponent: PropTypes.string,
   tabs: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
-    link: PropTypes.string.isRequired,
-    currentPath: PropTypes.string.isRequired,
   })),
 };
 
 NavTabs.defaultProps = {
+  tabComponent: "",
   tabs: [],
 };
 
