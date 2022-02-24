@@ -25,30 +25,12 @@ Injector.ready(() => {
         **/
         let Component;
 
-        /**
-         * If Component name is set in data-component attribute and it is not empty string.
-         * Then try to get Component from existing Components.
-         * If Component does not exist load ErrorComponent.
-         * If Component exists load Component.
-         * If data-component attribute doesn't exist load DefaultComponent
-        **/
-        if (typeof componentName === 'string' && componentName !== '') {
-          let isExist = false;
-          //try to get Component from existing Components
-          try {
-            Injector.component.get(componentName);
-            isExist = true;
-          } catch (error) {
-            console.warn(error.message);
-          }
-          // if Component exists load Component
-          if (isExist) {
-            Component = loadComponent(componentName, context);
-          } else {
-            Component = loadComponent("ErrorComponent");
-          }
-        } else {
-          Component = loadComponent("DefaultComponent");
+        try {
+          Injector.component.get(componentName);
+          Component = loadComponent(componentName, context);
+        } catch (error) {
+          console.error(error.message);
+          return;
         }
 
         this.setComponent(Component);

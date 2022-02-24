@@ -11,7 +11,7 @@ const breadcrumbs = [
 
 const LeftAndMain = loadComponent('LeftAndMain');
 
-const ErrorComponent = ({ componentName }) => {
+const ReactAdminErrorComponent = ({ componentName }) => {
 
     return (
         <LeftAndMain breadcrumbs={breadcrumbs}>
@@ -23,4 +23,4 @@ const ErrorComponent = ({ componentName }) => {
     );
 };
 
-export default ErrorComponent;
+export default ReactAdminErrorComponent;

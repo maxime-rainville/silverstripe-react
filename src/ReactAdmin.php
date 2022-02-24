@@ -98,4 +98,9 @@ abstract class ReactAdmin extends LeftAndMain implements ReactComponent
         ]);
     }
 
+    public function getComponent(): string
+    {
+        return 'ReactAdminDefaultComponent';
+    }
+
 }

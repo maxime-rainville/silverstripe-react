@@ -3,14 +3,14 @@ import { loadComponent } from 'lib/Injector';
 
 const breadcrumbs = [
     {
-        text: 'Default Component',
+        text: 'React Admin Default Component',
         href: '#',
     },
 ];
 
 const LeftAndMain = loadComponent('LeftAndMain');
 
-const DefaultComponent = () => {
+const ReactAdminDefaultComponent = () => {
 
     return (
         <LeftAndMain breadcrumbs={breadcrumbs}>
@@ -19,4 +19,4 @@ const DefaultComponent = () => {
     );
 };
 
-export default DefaultComponent;
+export default ReactAdminDefaultComponent;
