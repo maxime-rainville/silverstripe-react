@@ -452,9 +452,9 @@ var _react2 = _interopRequireDefault(_react);
 
 var _Injector = __webpack_require__("lib/Injector");
 
-var _classNames = __webpack_require__("./node_modules/classNames/index.js");
+var _classnames = __webpack_require__("classnames");
 
-var _classNames2 = _interopRequireDefault(_classNames);
+var _classnames2 = _interopRequireDefault(_classnames);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -465,7 +465,7 @@ var breadcrumbs = [{
 
 var LeftAndMain = (0, _Injector.loadComponent)('LeftAndMain');
 
-var ErrorComponent = function ErrorComponent(_ref) {
+var ReactAdminErrorComponent = function ReactAdminErrorComponent(_ref) {
     var componentName = _ref.componentName;
 
 
@@ -489,7 +489,7 @@ var ErrorComponent = function ErrorComponent(_ref) {
     );
 };
 
-exports.default = ErrorComponent;
+exports.default = ReactAdminErrorComponent;
 
 /***/ }),
 
@@ -653,72 +653,6 @@ _Injector2.default.ready(function () {
 
 __webpack_require__("./client/src/legacy/entwine/BootstrapReactComponent.js");
 __webpack_require__("./client/src/legacy/entwine/BootstrapReactFormField.js");
-
-/***/ }),
-
-/***/ "./node_modules/classNames/index.js":
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
-  Copyright (c) 2018 Jed Watson.
-  Licensed under the MIT License (MIT), see
-  http://jedwatson.github.io/classnames
-*/
-/* global define */
-
-(function () {
-	'use strict';
-
-	var hasOwn = {}.hasOwnProperty;
-
-	function classNames() {
-		var classes = [];
-
-		for (var i = 0; i < arguments.length; i++) {
-			var arg = arguments[i];
-			if (!arg) continue;
-
-			var argType = typeof arg;
-
-			if (argType === 'string' || argType === 'number') {
-				classes.push(arg);
-			} else if (Array.isArray(arg)) {
-				if (arg.length) {
-					var inner = classNames.apply(null, arg);
-					if (inner) {
-						classes.push(inner);
-					}
-				}
-			} else if (argType === 'object') {
-				if (arg.toString === Object.prototype.toString) {
-					for (var key in arg) {
-						if (hasOwn.call(arg, key) && arg[key]) {
-							classes.push(key);
-						}
-					}
-				} else {
-					classes.push(arg.toString());
-				}
-			}
-		}
-
-		return classes.join(' ');
-	}
-
-	if (typeof module !== 'undefined' && module.exports) {
-		classNames.default = classNames;
-		module.exports = classNames;
-	} else if (true) {
-		// register as 'classnames', consistent with npm package name
-		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
-			return classNames;
-		}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	} else {
-		window.classNames = classNames;
-	}
-}());
-
 
 /***/ }),
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { loadComponent } from 'lib/Injector';
-import classNames from "classNames";
+import classNames from "classnames";
 
 const breadcrumbs = [
     {
