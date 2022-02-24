@@ -151,6 +151,10 @@ var _ReactAdminBoostrap2 = _interopRequireDefault(_ReactAdminBoostrap);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = function () {
+  if (typeof reactAdminConfig === 'undefined') {
+    return;
+  }
+
   var sectionConfig = _Config2.default.getSection(reactAdminConfig.configKey);
 
   _ReactRouteRegister2.default.add({
@@ -330,7 +334,6 @@ var LeftAndMain = function LeftAndMain(_ref) {
       { className: 'panel panel--padded panel--scrollable' },
       topActions.length > 0 && _react2.default.createElement(_ActionBar2.default, { actions: topActions }),
       children,
-      'Suggested change',
       bottomActions.length > 0 && _react2.default.createElement(_ActionBar2.default, { actions: bottomActions, isBottomActionBar: true })
     )
   );
