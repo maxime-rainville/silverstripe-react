@@ -1,2 +1,2 @@
-.action-bar{padding-left:1.5385rem;padding-right:1.5385rem;height:53px}.action-bar.action-bar--bottom{position:absolute;bottom:0;background-color:#f4f6f8;border-top:1px solid #dbe0e9}.action-bar .btn-toolbar{margin-top:auto;margin-bottom:auto}.left-and-main{position:relative}.error-message{text-align:center}.react-admin{width:100%}
+.action-bar{height:53px}.action-bar--bottom{position:absolute;bottom:0;background-color:#f4f6f8;border-top:1px solid #dbe0e9;left:0;padding-left:1.5385rem;padding-right:1.5385rem}.action-bar .btn-toolbar{margin-top:auto;margin-bottom:auto}.left-and-main{position:relative}.error-message{text-align:center}.react-admin{width:100%}
 /*# sourceMappingURL=bundle.css.map*/

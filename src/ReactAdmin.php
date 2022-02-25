@@ -29,9 +29,6 @@ abstract class ReactAdmin extends LeftAndMain implements ReactComponent
     private static $url_handlers = [
         // This matches thi index routo
         '' => 'index',
-
-        // This matches any other route but return a 404 response code
-        '//$*' => 'notfound',
     ];
 
     public function forTemplate()
