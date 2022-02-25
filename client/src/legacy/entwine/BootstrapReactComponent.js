@@ -18,7 +18,20 @@ Injector.ready(() => {
           : {};
 
         const componentName = this.data('component');
-        const Component = loadComponent(componentName, context);
+
+        /** 
+         * Define variable "Component" after Injector found Component
+         * in existing Components
+        **/
+        let Component;
+
+        try {
+          Injector.component.get(componentName);
+          Component = loadComponent(componentName, context);
+        } catch (error) {
+          console.error(error.message);
+          return;
+        }
 
         this.setComponent(Component);
         this._super();

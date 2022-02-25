@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from "classnames";
-import { loadComponent } from 'lib/Injector';
 
 /**
  * Render navigation tabs on CMS
@@ -10,7 +9,7 @@ import { loadComponent } from 'lib/Injector';
  * @returns {JSX.Element}
  * @constructor
  */
-const NavTabs = ({tabs, tabComponent}) => {
+const NavTabs = ({ tabs, tabComponent: TabComponent }) => {
   const navTabs = tabs.map((tab, index) => {
 
     const tabClass = classNames(
@@ -18,10 +17,10 @@ const NavTabs = ({tabs, tabComponent}) => {
     );
 
     const tabKey = `${tab.title}-${index}`;
-    const TabComponent = tabComponent ? loadComponent(tabComponent) : "a";
-
     return (
-      <TabComponent className={tabClass} key={tabKey} role="tab" {...tab}>{tab.title}</TabComponent>
+      <TabComponent className={tabClass} role="tab" {...tab}>
+        {tab.title}
+      </TabComponent>
     );
   });
 
@@ -42,7 +41,7 @@ NavTabs.propTypes = {
 };
 
 NavTabs.defaultProps = {
-  tabComponent: "",
+  tabComponent: 'a',
   tabs: [],
 };
 

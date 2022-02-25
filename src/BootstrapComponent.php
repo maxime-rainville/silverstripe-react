@@ -41,6 +41,14 @@ trait BootstrapComponent
         ];
     }
 
+        /**
+     * Default default extra classes that should always be present.
+     */
+    protected function getDefaultExtraClasses(): array
+    {
+        return ['bootstrap-component'];
+    }
+
     abstract public function getProps(): array;
 
     abstract public function getComponent(): string;
