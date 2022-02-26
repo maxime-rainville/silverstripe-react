@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import HeaderComponent from './HeaderComponent';
 import ActionBar from "./ActionBar";
+import NavTabs from "./NavTabs";
 
 /**
  * It renders a generic LeftAndMain UI in cms
@@ -12,10 +13,10 @@ import ActionBar from "./ActionBar";
  * @returns {JSX.Element}
  * @constructor
  */
-const LeftAndMain = ({ children, topActions, bottomActions, breadcrumbs }) => {
+const LeftAndMain = ({ children, topActions, bottomActions, breadcrumbs, tabs, tabComponent }) => {
   return (
     <div className="left-and-main fill-height">
-      <HeaderComponent breadcrumbs={breadcrumbs} />
+      <HeaderComponent breadcrumbs={breadcrumbs} tabs={tabs} tabComponent={tabComponent} />
       <div className="panel panel--padded panel--scrollable">
         {topActions.length > 0 && <ActionBar actions={topActions} />}
         {children}
@@ -28,12 +29,14 @@ const LeftAndMain = ({ children, topActions, bottomActions, breadcrumbs }) => {
 LeftAndMain.propTypes = {
   topActions: PropTypes.array,
   bottomActions: PropTypes.array,
+  tabs: PropTypes.array,
   breadcrumbs: PropTypes.array,
 };
 
 LeftAndMain.defaultProps = {
   topActions: [],
   bottomActions: [],
+  tabs: [],
   breadcrumbs: [],
 };
 
