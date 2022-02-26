@@ -10,17 +10,18 @@ import classNames from "classnames";
  * @constructor
  */
 const NavTabs = ({ tabs, tabComponent: TabComponent }) => {
-  const navTabs = tabs.map((tab, index) => {
-
+  const navTabs = tabs.map(({ current, ...tab }, index) => {
     const tabClass = classNames(
-      "nav-tabs__tab-item",
+      'nav-tabs__tab-item'
     );
 
     const tabKey = `${tab.title}-${index}`;
     return (
-      <TabComponent className={tabClass} role="tab" {...tab}>
-        {tab.title}
-      </TabComponent>
+      <li key={tabKey} className={tabClass}>
+        <TabComponent role="tab" {...tab} className={classNames(tab.className, 'nav-tabs__link', { 'nav-tabs__link--current': current })} >
+          {tab.title}
+        </TabComponent>
+      </li>
     );
   });
 

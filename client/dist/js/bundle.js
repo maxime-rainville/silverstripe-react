@@ -394,19 +394,27 @@ var _classnames2 = _interopRequireDefault(_classnames);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
 var NavTabs = function NavTabs(_ref) {
   var tabs = _ref.tabs,
       TabComponent = _ref.tabComponent;
 
-  var navTabs = tabs.map(function (tab, index) {
+  var navTabs = tabs.map(function (_ref2, index) {
+    var current = _ref2.current,
+        tab = _objectWithoutProperties(_ref2, ['current']);
 
-    var tabClass = (0, _classnames2.default)("nav-tabs__tab-item");
+    var tabClass = (0, _classnames2.default)('nav-tabs__tab-item');
 
     var tabKey = tab.title + '-' + index;
     return _react2.default.createElement(
-      TabComponent,
-      _extends({ className: tabClass, role: 'tab' }, tab),
-      tab.title
+      'li',
+      { key: tabKey, className: tabClass },
+      _react2.default.createElement(
+        TabComponent,
+        _extends({ role: 'tab' }, tab, { className: (0, _classnames2.default)(tab.className, 'nav-tabs__link', { 'nav-tabs__link--current': current }) }),
+        tab.title
+      )
     );
   });
 
