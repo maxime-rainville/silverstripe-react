@@ -102,9 +102,7 @@ var _Injector = __webpack_require__("lib/Injector");
 
 var _Injector2 = _interopRequireDefault(_Injector);
 
-var _LeftAndMain = __webpack_require__("./client/src/components/LeftAndMain.js");
-
-var _LeftAndMain2 = _interopRequireDefault(_LeftAndMain);
+var _LeftAndMain = __webpack_require__("./client/src/components/LeftAndMain/index.js");
 
 var _ReactAdminDefaultComponent = __webpack_require__("./client/src/components/ReactAdminDefaultComponent.js");
 
@@ -118,7 +116,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = function () {
   _Injector2.default.component.registerMany({
-    LeftAndMain: _LeftAndMain2.default,
+    LeftAndMain: _LeftAndMain.LeftAndMain,
     ReactAdminDefaultComponent: _ReactAdminDefaultComponent2.default,
     ReactAdminErrorComponent: _ReactAdminErrorComponent2.default
   });
@@ -178,7 +176,7 @@ __webpack_require__("./client/src/boot/index.js");
 
 /***/ }),
 
-/***/ "./client/src/components/ActionBar.js":
+/***/ "./client/src/components/LeftAndMain/ActionBar.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -254,7 +252,7 @@ exports.default = ActionBar;
 
 /***/ }),
 
-/***/ "./client/src/components/HeaderComponent.js":
+/***/ "./client/src/components/LeftAndMain/HeaderComponent.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -274,29 +272,53 @@ var _Toolbar2 = _interopRequireDefault(_Toolbar);
 
 var _Breadcrumb = __webpack_require__("components/Breadcrumb/Breadcrumb");
 
-var _NavTabs = __webpack_require__("./client/src/components/NavTabs.js");
+var _NavTabs = __webpack_require__("./client/src/components/LeftAndMain/NavTabs.js");
 
 var _NavTabs2 = _interopRequireDefault(_NavTabs);
 
+var _propTypes = __webpack_require__("prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var onBackButtonClick = function onBackButtonClick() {
+  var lastCrumb = document.querySelector('.breadcrumb > .breadcrumb__item:last-child > *');
+  if (lastCrumb) {
+    lastCrumb.click();
+  }
+};
 
 var HeaderComponent = function HeaderComponent(_ref) {
   var breadcrumbs = _ref.breadcrumbs,
-      tabs = _ref.tabs,
-      tabComponent = _ref.tabComponent;
+      title = _ref.title,
+      tabProps = _ref.tabProps;
+
+  var crumbs = breadcrumbs && breadcrumbs.length > 0 ? breadcrumbs : [{ text: title }];
+
   return _react2.default.createElement(
     _Toolbar2.default,
-    { className: 'fill-width' },
-    _react2.default.createElement(_Breadcrumb.Component, { multiline: true, crumbs: breadcrumbs }),
-    tabs.length > 0 && _react2.default.createElement(_NavTabs2.default, { tabs: tabs, tabComponent: tabComponent })
+    {
+      className: 'fill-width',
+      showBackButton: crumbs.length > 1,
+      onBackButtonClick: onBackButtonClick
+    },
+    _react2.default.createElement(_Breadcrumb.Component, { multiline: true, crumbs: crumbs }),
+    tabProps && _react2.default.createElement(_NavTabs2.default, tabProps)
   );
+};
+
+HeaderComponent.propTypes = {
+  title: _propTypes2.default.string,
+  breadcrumbs: _Breadcrumb.Component.propTypes.crumbs,
+  tabProps: _propTypes2.default.shape(_NavTabs2.default.propTypes)
 };
 
 exports.default = HeaderComponent;
 
 /***/ }),
 
-/***/ "./client/src/components/LeftAndMain.js":
+/***/ "./client/src/components/LeftAndMain/LeftAndMain.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -306,6 +328,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _react = __webpack_require__("react");
 
 var _react2 = _interopRequireDefault(_react);
@@ -314,17 +338,13 @@ var _propTypes = __webpack_require__("prop-types");
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _HeaderComponent = __webpack_require__("./client/src/components/HeaderComponent.js");
+var _HeaderComponent = __webpack_require__("./client/src/components/LeftAndMain/HeaderComponent.js");
 
 var _HeaderComponent2 = _interopRequireDefault(_HeaderComponent);
 
-var _ActionBar = __webpack_require__("./client/src/components/ActionBar.js");
+var _ActionBar = __webpack_require__("./client/src/components/LeftAndMain/ActionBar.js");
 
 var _ActionBar2 = _interopRequireDefault(_ActionBar);
-
-var _NavTabs = __webpack_require__("./client/src/components/NavTabs.js");
-
-var _NavTabs2 = _interopRequireDefault(_NavTabs);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -332,14 +352,13 @@ var LeftAndMain = function LeftAndMain(_ref) {
   var children = _ref.children,
       topActions = _ref.topActions,
       bottomActions = _ref.bottomActions,
+      title = _ref.title,
       breadcrumbs = _ref.breadcrumbs,
-      tabs = _ref.tabs,
-      tabComponent = _ref.tabComponent;
-
+      tabProps = _ref.tabProps;
   return _react2.default.createElement(
     'div',
     { className: 'left-and-main fill-height' },
-    _react2.default.createElement(_HeaderComponent2.default, { breadcrumbs: breadcrumbs, tabs: tabs, tabComponent: tabComponent }),
+    _react2.default.createElement(_HeaderComponent2.default, { breadcrumbs: breadcrumbs, title: title, tabProps: tabProps }),
     _react2.default.createElement(
       'div',
       { className: 'panel panel--padded panel--scrollable' },
@@ -350,12 +369,10 @@ var LeftAndMain = function LeftAndMain(_ref) {
   );
 };
 
-LeftAndMain.propTypes = {
+LeftAndMain.propTypes = _extends({}, _HeaderComponent2.default.propTypes, {
   topActions: _propTypes2.default.array,
-  bottomActions: _propTypes2.default.array,
-  tabs: _propTypes2.default.array,
-  breadcrumbs: _propTypes2.default.array
-};
+  bottomActions: _propTypes2.default.array
+});
 
 LeftAndMain.defaultProps = {
   topActions: [],
@@ -368,7 +385,7 @@ exports.default = LeftAndMain;
 
 /***/ }),
 
-/***/ "./client/src/components/NavTabs.js":
+/***/ "./client/src/components/LeftAndMain/NavTabs.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -396,50 +413,87 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
-var NavTabs = function NavTabs(_ref) {
-  var tabs = _ref.tabs,
-      TabComponent = _ref.tabComponent;
+var NavTab = function NavTab(_ref) {
+  var current = _ref.current,
+      TabComponent = _ref.component,
+      className = _ref.className,
+      title = _ref.title,
+      children = _ref.children,
+      tabProps = _objectWithoutProperties(_ref, ['current', 'component', 'className', 'title', 'children']);
 
-  var navTabs = tabs.map(function (_ref2, index) {
-    var current = _ref2.current,
-        tab = _objectWithoutProperties(_ref2, ['current']);
+  var tabClass = (0, _classnames2.default)('nav-tabs__tab-item', { 'nav-tabs__tab-item--current': current });
 
-    var tabClass = (0, _classnames2.default)('nav-tabs__tab-item');
+  var linkClass = (0, _classnames2.default)(className, 'nav-tabs__link', { 'nav-tabs__link--current': current });
 
-    var tabKey = tab.title + '-' + index;
-    return _react2.default.createElement(
-      'li',
-      { key: tabKey, className: tabClass },
-      _react2.default.createElement(
-        TabComponent,
-        _extends({ role: 'tab' }, tab, { className: (0, _classnames2.default)(tab.className, 'nav-tabs__link', { 'nav-tabs__link--current': current }) }),
-        tab.title
-      )
-    );
-  });
+  return _react2.default.createElement(
+    'li',
+    { className: tabClass },
+    _react2.default.createElement(
+      TabComponent,
+      _extends({}, tabProps, { role: 'tab', className: linkClass }),
+      children || title
+    )
+  );
+};
 
-  var navTabClass = (0, _classnames2.default)("nav-tabs");
+var NavTabs = function NavTabs(_ref2) {
+  var tabs = _ref2.tabs,
+      className = _ref2.className,
+      component = _ref2.component,
+      current = _ref2.current;
+
+  var navTabClass = (0, _classnames2.default)(className, 'nav-tabs');
 
   return _react2.default.createElement(
     'ul',
     { className: navTabClass, role: 'tablist' },
-    navTabs
+    tabs.map(function (_ref3) {
+      var key = _ref3.key,
+          tabProps = _objectWithoutProperties(_ref3, ['key']);
+
+      return _react2.default.createElement(NavTab, _extends({ key: key, current: current === key, component: component }, tabProps));
+    })
   );
 };
 
 NavTabs.propTypes = {
-  tabComponent: _propTypes2.default.string,
+  component: _propTypes2.default.elementType,
+  classNames: _propTypes2.default.string,
+  current: _propTypes2.default.string,
   tabs: _propTypes2.default.arrayOf(_propTypes2.default.shape({
-    title: _propTypes2.default.string.isRequired
+    key: _propTypes2.default.string,
+    title: _propTypes2.default.string,
+    component: _propTypes2.default.elementType
   }))
 };
 
 NavTabs.defaultProps = {
-  tabComponent: 'a',
+  component: 'a',
   tabs: []
 };
 
 exports.default = NavTabs;
+
+/***/ }),
+
+/***/ "./client/src/components/LeftAndMain/index.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.LeftAndMain = undefined;
+
+var _LeftAndMain = __webpack_require__("./client/src/components/LeftAndMain/LeftAndMain.js");
+
+var _LeftAndMain2 = _interopRequireDefault(_LeftAndMain);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.LeftAndMain = _LeftAndMain2.default;
 
 /***/ }),
 

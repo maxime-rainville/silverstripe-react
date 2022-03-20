@@ -3,9 +3,9 @@
 
 // Import all of your SCSS stylesheets using relative paths from "components"
 // e.g. @import '../components/MyComponent/MyComponent.scss';
-@import "../components/ActionBar";
-@import "../components/LeftAndMain";
-@import "../components/NavTabs";
+@import "../components/LeftAndMain/ActionBar";
+@import "../components/LeftAndMain/LeftAndMain";
+@import "../components/LeftAndMain/NavTabs";
 @import "../components/ReactAdminErrorComponent";
 
 // Import any legacy SCSS stylesheets
