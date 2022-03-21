@@ -206,47 +206,69 @@ var _Button2 = _interopRequireDefault(_Button);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var ActionBar = function ActionBar(_ref) {
-  var actions = _ref.actions,
-      isBottomActionBar = _ref.isBottomActionBar;
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
-  var actionBarClass = (0, _classnames2.default)({
-    "action-bar": true,
-    "fill-width": true,
-    "action-bar--bottom": isBottomActionBar
-  });
+var Action = function Action(_ref) {
+  var current = _ref.current,
+      ActionComponent = _ref.component,
+      className = _ref.className,
+      title = _ref.title,
+      children = _ref.children,
+      props = _objectWithoutProperties(_ref, ['current', 'component', 'className', 'title', 'children']);
 
-  var actionButtons = actions.map(function (action) {
-    return _react2.default.createElement(
-      _Button2.default,
-      _extends({ key: action.value }, action),
-      action.label
-    );
-  });
+  var actionClassName = (0, _classnames2.default)(className, 'action-bar__action');
+
+  return _react2.default.createElement(
+    ActionComponent,
+    _extends({}, props, { className: actionClassName }),
+    children || title
+  );
+};
+
+var ActionBar = function ActionBar(_ref2) {
+  var actions = _ref2.actions,
+      className = _ref2.className,
+      component = _ref2.component,
+      position = _ref2.position;
+
+  if (!actions || actions.length === 0) {
+    return false;
+  }
+
+  var actionBarClass = (0, _classnames2.default)('action-bar', 'fill-width', className, { 'action-bar--bottom': position === 'bottom' });
 
   return _react2.default.createElement(
     'div',
     { className: actionBarClass },
     _react2.default.createElement(
       'div',
-      { className: 'btn-toolbar' },
-      actionButtons
+      { className: 'btn-toolbar fill-width' },
+      actions.map(function (_ref3) {
+        var key = _ref3.key,
+            props = _objectWithoutProperties(_ref3, ['key']);
+
+        return _react2.default.createElement(Action, _extends({ key: key, component: component }, props));
+      })
     )
   );
 };
 
-ActionBar.propTypes = _extends({}, _Button2.default.propTypes, {
+ActionBar.propTypes = {
+  component: _propTypes2.default.elementType,
+  className: _propTypes2.default.string,
   actions: _propTypes2.default.arrayOf(_propTypes2.default.shape({
-    value: _propTypes2.default.string.isRequired,
-    label: _propTypes2.default.string.isRequired
+    key: _propTypes2.default.string,
+    title: _propTypes2.default.string,
+    component: _propTypes2.default.elementType
   })),
-  isBottomActionBar: _propTypes2.default.bool
-});
+  position: _propTypes2.default.oneOf(['top', 'bottom'])
+};
 
-ActionBar.defaultProps = _extends({}, _Button2.default.defaultProps, {
+ActionBar.defaultProps = {
+  component: _Button2.default,
   actions: [],
-  isBottomActionBar: false
-});
+  position: 'top'
+};
 
 exports.default = ActionBar;
 
@@ -362,9 +384,9 @@ var LeftAndMain = function LeftAndMain(_ref) {
     _react2.default.createElement(
       'div',
       { className: 'panel panel--padded panel--scrollable' },
-      topActions.length > 0 && _react2.default.createElement(_ActionBar2.default, { actions: topActions }),
+      _react2.default.createElement(_ActionBar2.default, { actions: topActions }),
       children,
-      bottomActions.length > 0 && _react2.default.createElement(_ActionBar2.default, { actions: bottomActions, isBottomActionBar: true })
+      _react2.default.createElement(_ActionBar2.default, { actions: bottomActions, position: 'bottom' })
     )
   );
 };
