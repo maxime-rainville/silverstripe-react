@@ -1,5 +1,5 @@
 import React from 'react';
-import { loadComponent } from 'lib/Injector';
+import { LeftAndMain } from './LeftAndMain';
 
 const breadcrumbs = [
     {
@@ -7,8 +7,6 @@ const breadcrumbs = [
         href: '#',
     },
 ];
-
-const LeftAndMain = loadComponent('LeftAndMain');
 
 const ReactAdminErrorComponent = ({ componentName }) => (
   <LeftAndMain breadcrumbs={breadcrumbs}>

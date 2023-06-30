@@ -1,21 +1,22 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
-import { storiesOf, setAddon } from '@storybook/react';
-import { withKnobs } from '@storybook/addon-knobs/react';
-import { withNotes } from '@storybook/addon-notes';
-import JSXAddon from 'storybook-addon-jsx';
-import notes from '../README.md';
-
 import ReactAdminDefaultComponent from '../ReactAdminDefaultComponent';
 
-setAddon(JSXAddon);
+export default {
+  title: 'React/ReactAdminDefaultComponent',
+  tags: ['autodocs'],
+  component: ReactAdminDefaultComponent,
+  parameters: {
+    docs: {
+      description: {
+        component: 'Layout a CMS administration section'
+      },
+      canvas: {
+        sourceState: 'shown',
+      },
+    },
+  },
+  argTypes: { }
+};
 
-storiesOf('ReactAdmin/ReactAdminDefaultComponent', module)
-  .addDecorator(story => <div>{story()}</div>)
-  .addDecorator(withKnobs)
-  .addWithJSX(
-    'ReactAdminDefaultComponent',
-    withNotes(notes)(() => (
-      <ReactAdminDefaultComponent />
-    ))
-  );
+export const _ReactAdminDefaultComponent = (args) => <ReactAdminDefaultComponent {...args} />;
+_ReactAdminDefaultComponent.args = {};

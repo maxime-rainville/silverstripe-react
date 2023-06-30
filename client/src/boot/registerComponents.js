@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import Injector from 'lib/Injector';
 import { LeftAndMain } from 'components/LeftAndMain';
 import ReactAdminDefaultComponent from '../components/ReactAdminDefaultComponent';
