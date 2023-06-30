@@ -19,16 +19,17 @@ Injector.ready(() => {
 
         const componentName = this.data('component');
 
-        /** 
+        /**
          * Define variable "Component" after Injector found Component
          * in existing Components
-        **/
+         */
         let Component;
 
         try {
           Injector.component.get(componentName);
           Component = loadComponent(componentName, context);
         } catch (error) {
+          // eslint-disable-next-line no-console
           console.error(error.message);
           return;
         }

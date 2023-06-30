@@ -12,12 +12,12 @@ import LeftAndMain from '../LeftAndMain';
 setAddon(JSXAddon);
 
 const topActions = [
-  { label: "Save", color: "primary", size: 'md'},
-  { label: "Delete", color: "secondary", size: 'md'},
+  { label: 'Save', color: 'primary', size: 'md' },
+  { label: 'Delete', color: 'secondary', size: 'md' },
 ];
 
 const bottomActions = [
-  { label: "Edit", icon: "edit", color: "primary", size: 'md', outline: true },
+  { label: 'Edit', icon: 'edit', color: 'primary', size: 'md', outline: true },
 ];
 
 storiesOf('ReactAdmin/LeftAndMain', module)

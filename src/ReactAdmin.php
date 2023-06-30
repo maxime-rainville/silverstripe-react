@@ -71,7 +71,7 @@ abstract class ReactAdmin extends LeftAndMain implements ReactComponent
      * @param HTTPRequest $request
      * @return HTTPResponse
      */
-    public function index($request)
+    public function index(HTTPRequest $request): HTTPResponse
     {
         $bootstrapConfig = [
             'configKey' => static::class,

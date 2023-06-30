@@ -8,12 +8,13 @@ const takeComponent = (componentName) => {
       Injector.component.get(componentName);
       return loadComponent(componentName);
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.warn(error.message);
-      return loadComponent("ReactAdminErrorComponent");
+      return loadComponent('ReactAdminErrorComponent');
     }
   }
-  return loadComponent("ReactAdminErrorComponent");
-}
+  return loadComponent('ReactAdminErrorComponent');
+};
 
 const ReactAdminBoostrap = () => {
   const RootComponent = takeComponent(reactAdminConfig.component);

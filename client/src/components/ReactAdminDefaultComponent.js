@@ -10,13 +10,10 @@ const breadcrumbs = [
 
 const LeftAndMain = loadComponent('LeftAndMain');
 
-const ReactAdminDefaultComponent = () => {
-
-    return (
-        <LeftAndMain breadcrumbs={breadcrumbs}>
-            To create new component, you should to do the following...
-        </LeftAndMain>
-    );
-};
+const ReactAdminDefaultComponent = () => (
+  <LeftAndMain breadcrumbs={breadcrumbs}>
+    To create new component, you should to do the following...
+  </LeftAndMain>
+);
 
 export default ReactAdminDefaultComponent;

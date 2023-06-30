@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import classNames from "classnames";
+import classNames from 'classnames';
 
 const NavTab = ({ current, component: TabComponent, className, title, children, ...tabProps }) => {
   const tabClass = classNames(
