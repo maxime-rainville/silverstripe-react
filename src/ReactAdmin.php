@@ -27,7 +27,7 @@ abstract class ReactAdmin extends LeftAndMain implements ReactComponent
     ];
 
     private static $url_handlers = [
-        // This matches thi index routo
+        // This matches the index route
         '' => 'index',
     ];
 

@@ -12,7 +12,7 @@ export default () => {
   const sectionConfig = Config.getSection(reactAdminConfig.configKey);
 
   reactRouteRegister.add({
-    path: `/${sectionConfig.reactRoutePath}`,
+    path: `/${sectionConfig.reactRoutePath}/*`,
     component: ReactAdminBoostrap,
     exact: false
   });
