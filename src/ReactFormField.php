@@ -87,4 +87,12 @@ abstract class ReactFormField extends FormField implements ReactComponent
 
         return $schema;
     }
+
+    /**
+     * Subclasses can override this method to add some initial HTML to render
+     * before react has a chance to boot
+     */
+    public function InitialHTML()
+    {
+    }
 }
