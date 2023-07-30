@@ -1,0 +1,18 @@
+.action-bar {
+  height: 53px;
+
+  &--bottom {
+    position: absolute;
+    bottom: 0;
+    background-color: #f4f6f8;
+    border-top: 1px solid #dbe0e9;
+    left: 0;
+    padding-left: 1.5385rem;
+    padding-right: 1.5385rem;
+  }
+
+  .btn-toolbar {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+}

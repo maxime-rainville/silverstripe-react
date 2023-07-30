@@ -2,7 +2,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import jQuery from 'jquery';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import Injector, { loadComponent } from 'lib/Injector';
 
 Injector.ready(() => {
@@ -12,6 +12,7 @@ Injector.ready(() => {
       Component: null,
       Value: null,
       HiddenInput: null,
+      Root: null,
 
       onmatch() {
         const cmsContent = this.closest('.cms-content').attr('id');
@@ -29,6 +30,8 @@ Injector.ready(() => {
           this.setHiddenInput(input);
         }
 
+        this.setRoot(ReactDOM.createRoot(this[0]));
+
         this._super();
         this.refresh();
       },
@@ -36,7 +39,8 @@ Injector.ready(() => {
       refresh() {
         const props = this.getProps();
         const Component = this.getComponent();
-        ReactDOM.render(<Component {...props} noHolder />, this[0]);
+        const root = this.getRoot();
+        root.render(<Component {...props} noHolder />);
       },
 
       handleChange(event, { value }) {

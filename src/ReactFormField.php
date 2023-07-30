@@ -12,9 +12,9 @@ abstract class ReactFormField extends FormField implements ReactComponent
 {
 
     /**
-     * Whether an input taf shoulde be rendered when using the React component
+     * Whether an input tag should be rendered when using the React component
      * in an entwine form. If the React implementation of the field does not output
-     * an input tag (or someother HTML form field), this should be set to true.
+     * an input tag (or some other HTML form field), this should be set to true.
      * @var bool
      */
     protected $renderInput = false;
@@ -45,7 +45,7 @@ abstract class ReactFormField extends FormField implements ReactComponent
     {
         return [
             'name' => $this->getName(),
-            'value' => $this->Value(),
+            'value' => $this->InputValue(),
             'extraClass' => $this->extraClass(),
             'id' => $this->ID(),
             'disabled' => $this->isDisabled(),
@@ -68,5 +68,23 @@ abstract class ReactFormField extends FormField implements ReactComponent
     public function HiddenID(): string
     {
         return $this->ID() . '_HiddenValueField';
+    }
+
+    /**
+     * Convert the value to what will be rendered in thi input on the front end
+     */
+    public function InputValue(): string
+    {
+        return $this->Value();
+    }
+
+
+    public function getSchemaData()
+    {
+        $schema = parent::getSchemaData();
+
+        $schema = array_merge($schema, $this->getProps());
+
+        return $schema;
     }
 }

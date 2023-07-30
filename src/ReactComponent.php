@@ -2,8 +2,6 @@
 
 namespace MaximeRainville\SilverstripeReact;
 
-use SilverStripe\Forms\Tests\GridField\GridFieldTest\HTMLFragments;
-
 /**
  * ViewableData object that can be rendered as a react component in the
  * Silverstripe CMS UI.

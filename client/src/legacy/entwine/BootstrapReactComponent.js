@@ -2,7 +2,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import jQuery from 'jquery';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import Injector, { loadComponent } from 'lib/Injector';
 
 Injector.ready(() => {
@@ -10,6 +10,7 @@ Injector.ready(() => {
     $('.js-injector-boot .bootstrap-component').entwine({
 
       Component: null,
+      Root: null,
 
       onmatch() {
         const cmsContent = this.closest('.cms-content').attr('id');
@@ -18,9 +19,24 @@ Injector.ready(() => {
           : {};
 
         const componentName = this.data('component');
-        const Component = loadComponent(componentName, context);
+
+        /**
+         * Define variable "Component" after Injector found Component
+         * in existing Components
+         */
+        let Component;
+
+        try {
+          Injector.component.get(componentName);
+          Component = loadComponent(componentName, context);
+        } catch (error) {
+          // eslint-disable-next-line no-console
+          console.error(error.message);
+          return;
+        }
 
         this.setComponent(Component);
+        this.setRoot(ReactDOM.createRoot(this[0]));
         this._super();
         this.refresh();
       },
@@ -28,7 +44,8 @@ Injector.ready(() => {
       refresh() {
         const props = this.getProps();
         const Component = this.getComponent();
-        ReactDOM.render(<Component {...props} />, this[0]);
+        const root = this.getRoot();
+        root.render(<Component {...props} />);
       },
 
       /**
